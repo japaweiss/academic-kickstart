@@ -5,15 +5,15 @@
 
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
-active = false  # Activate this widget? true/false
-weight = 15  # Order that this section will appear.
+active = true  # Activate this widget? true/false
+weight = 131  # Order that this section will appear.
 
-title = "Academic Kickstart"
+title = "BTC and Lightning payments:"
 subtitle = ""
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
-  columns = "1"
+  columns = "2"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -25,8 +25,8 @@ subtitle = ""
   # color = "navy"
   
   # Background gradient.
-  gradient_start = "DarkGreen"
-  gradient_end = "ForestGreen"
+  # gradient_start = "DarkGreen"
+  # gradient_end = "ForestGreen"
   
   # Background image.
   # image = "image.jpg"  # Name of image in `static/img/`.
@@ -48,28 +48,25 @@ subtitle = ""
  
  # CSS class.
  css_class = ""
+ 
+ # Note: Graue Farbwerte: #44475A
 +++
 
-Welcome to the **Academic Kickstart** template!
-
-Follow our [Getting Started](https://sourcethemes.com/academic/docs/get-started/) and [Page Builder](https://sourcethemes.com/academic/docs/widgets/) guides to easily personalize the template and then [add your own content](https://sourcethemes.com/academic/docs/managing-content/).
-
-For inspiration, check out [the Markdown files](https://sourcethemes.com/academic/docs/install/#demo-content) which power the [personal demo](https://academic-demo.netlify.com/). The easiest way to publish your new site to the internet is with [Netlify](https://sourcethemes.com/academic/docs/deployment/).
-
-- [View the documentation](https://sourcethemes.com/academic/docs/)
-- [Ask a question](http://discuss.gohugo.io/)
-- [Request a feature or report a bug](https://github.com/gcushen/hugo-academic/issues)
-- Updating? View the [Update Guide](https://sourcethemes.com/academic/docs/update/) and [Release Notes](https://sourcethemes.com/academic/updates/)
-- Support development of Academic:
-  - [Donate a coffee](https://paypal.me/cushen)
-  - [Become a backer on Patreon](https://www.patreon.com/cushen)
-  - [Decorate your laptop or journal with an Academic sticker](https://www.redbubble.com/people/neutreno/works/34387919-academic)
-  - [Wear the T-shirt](https://academic.threadless.com/)
-
-{{% alert note %}}
-This homepage section is an example of adding [elements](https://sourcethemes.com/academic/docs/writing-markdown-latex/) to the [*Blank* widget](https://sourcethemes.com/academic/docs/widgets/).
-
-Backgrounds can be applied to any section. Here, the *background* option is set give a *color gradient*.
-
-**To remove this section, delete `content/home/demo.md`.**
-{{% /alert %}}
+<style type="text/css"> .btcpay-form { display: inline-flex; align-items: center; justify-content: center; } .btcpay-form--inline { flex-direction: row; } .btcpay-form--block { flex-direction: column; } .btcpay-form--inline .submit { margin-left: 15px; } .btcpay-form--block select { margin-bottom: 10px; } .btcpay-form .btcpay-custom-container{ text-align: center; }.btcpay-custom { display: flex; align-items: center; justify-content: center; } .btcpay-form .plus-minus { cursor:pointer; font-size:25px; line-height: 25px; background: #44475A; height: 30px; width: 45px; border:none; border-radius: 60px; margin: auto 5px; display: inline-flex; justify-content: center; } .btcpay-form select { -moz-appearance: none; -webkit-appearance: none; appearance: none; color: currentColor; background: transparent; border:1px solid transparent; display: block; padding: 1px; margin-left: auto; margin-right: auto; font-size: 11px; cursor: pointer; } .btcpay-form select:hover { border-color: #ccc; } #btcpay-input-price { -moz-appearance: none; -webkit-appearance: none; border: none; box-shadow: none; text-align: center; font-size: 25px; margin: auto; border-radius: 5px; line-height: 35px; background: #44475A; } </style>
+<form method="POST"  action="https://btc.jpweiss.de/api/v1/invoices" class="btcpay-form btcpay-form--block">
+  <input type="hidden" name="storeId" value="ASzAeRLrdvyfYTgUH5w1VTQ7ChNMNPLtdVX91DzRrZjz" />
+  <div class="btcpay-custom-container">
+    <div class="btcpay-custom">
+      <button class="plus-minus" onclick="event.preventDefault(); var price = parseInt(document.querySelector('#btcpay-input-price').value); if ('-' == '-' && (price - 1) < 1) { return; } document.querySelector('#btcpay-input-price').value = parseInt(document.querySelector('#btcpay-input-price').value) - 1;">-</button>
+      <input id="btcpay-input-price" name="price" type="text" min="1" max="100" step="1" value="1" style="width: 3em;" oninput="event.preventDefault();isNaN(event.target.value) || event.target.value <= 0 ? document.querySelector('#btcpay-input-price').value = 1 : event.target.value"  />
+      <button class="plus-minus" onclick="event.preventDefault(); var price = parseInt(document.querySelector('#btcpay-input-price').value); if ('+' == '-' && (price - 1) < 1) { return; } document.querySelector('#btcpay-input-price').value = parseInt(document.querySelector('#btcpay-input-price').value) + 1;">+</button>
+    </div>
+    <select name="currency">
+      <option value="USD">USD</option>
+      <option value="GBP">GBP</option>
+      <option value="EUR" selected>EUR</option>
+      <option value="BTC">BTC</option>
+    </select>
+  </div>
+  <input type="image" class="submit" name="submit" src="https://btc.jpweiss.de/img/paybutton/pay.svg" style="width:209px" alt="Pay with BtcPay, Self-Hosted Bitcoin Payment Processor">
+</form>
