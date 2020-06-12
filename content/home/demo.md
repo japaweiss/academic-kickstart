@@ -8,7 +8,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 131  # Order that this section will appear.
 
-title = "BTC and Lightning payments:"
+title = "BTC and Lightning"
 subtitle = ""
 
 [design]
@@ -36,7 +36,7 @@ subtitle = ""
   # image_parallax = true  # Use a fun parallax-like fixed background effect? true/false
   
   # Text color (true=light or false=dark).
-  text_color_light = true
+  text_color_light = false
 
 [design.spacing]
   # Customize the section spacing. Order is top, right, bottom, left.
@@ -61,6 +61,7 @@ subtitle = ""
       <input id="btcpay-input-price" name="price" type="text" min="1" max="100" step="1" value="1" style="width: 3em;" oninput="event.preventDefault();isNaN(event.target.value) || event.target.value <= 0 ? document.querySelector('#btcpay-input-price').value = 1 : event.target.value"  />
       <button class="plus-minus" onclick="event.preventDefault(); var price = parseInt(document.querySelector('#btcpay-input-price').value); if ('+' == '-' && (price - 1) < 1) { return; } document.querySelector('#btcpay-input-price').value = parseInt(document.querySelector('#btcpay-input-price').value) + 1;">+</button>
     </div>
+    <input type="hidden" name="notifyEmail" value="notifications@jpweiss.de" />
     <select name="currency">
       <option value="USD">USD</option>
       <option value="GBP">GBP</option>
