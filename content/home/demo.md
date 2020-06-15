@@ -70,4 +70,8 @@ subtitle = ""
     </select>
   </div>
   <input type="image" class="submit" name="submit" src="https://btc.jpweiss.de/img/paybutton/pay.svg" style="width:209px" alt="Pay with BtcPay, Self-Hosted Bitcoin Payment Processor">
+
+<br>
+or pay with
+<a href="https://paynym.is/+coolfrost5d2" target="_blank" rel="noopener">PayNym</a>
 </form>
